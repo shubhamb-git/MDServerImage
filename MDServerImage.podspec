@@ -7,9 +7,9 @@
 #
 
 Pod::Spec.new do |s|
-  s.name             = 'ImagePod'
+  s.name             = 'MDServerImage'
   s.version          = '0.1.0'
-  s.summary          = 'A short description of ImagePod.'
+  s.summary          = 'A short description of MDServerImage.'
 
   s.description      = <<-DESC
 TODO: Add long description of the pod here.
@@ -22,11 +22,7 @@ TODO: Add long description of the pod here.
 
   s.ios.deployment_target = '10.0'
 
-  s.source_files = 'ImagePod/Classes/**/*.swift'
-  s.resources = [
-    'ImagePod/Classes/**/*.{storyboard,xib}',
-    'ImagePod/Assets/**/*'
-  ]
+  s.source_files = 'MDServerImage/Classes/**/*.swift'
 
   s.frameworks = 'UIKit'
 end

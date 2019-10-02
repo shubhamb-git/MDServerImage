@@ -1,0 +1,16 @@
+PODS:
+  - MDServerImage (0.1.0)
+
+DEPENDENCIES:
+  - MDServerImage (from `../`)
+
+EXTERNAL SOURCES:
+  MDServerImage:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  MDServerImage: ca6023ac22110115649b5ddd63e2a96adc854d1e
+
+PODFILE CHECKSUM: 34c06ccdb6fff53c0ed2d92bd7f8a95b0451cc4d
+
+COCOAPODS: 1.7.3
