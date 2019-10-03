@@ -18,7 +18,7 @@ TODO: Add long description of the pod here.
   s.homepage         = 'https://github.com/shubhamb-git/MDServerImage/'
   s.author           = { 'Shubham b' => 'shubhambairagi294@gmail.com' }
 
-  s.source           = { :git => 'https://github.com/shubhamb-git/MDServerImage', :tag => s.version.to_s }
+  s.source           = { :git => 'https://github.com/shubhamb-git/MDServerImage.git' }
 
   s.ios.deployment_target = '10.0'
 
