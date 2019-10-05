@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="landscape">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="LoadingView" customModule="Deven_app" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="103" height="103"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="USi-u1-7Nd">
+                    <rect key="frame" x="10" y="4.5" width="83" height="73"/>
+                    <subviews>
+                        <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="2UO-tS-WfD">
+                            <rect key="frame" x="31.5" y="15" width="20" height="20"/>
+                            <color key="color" red="0.4051293433" green="0.27865970130000001" blue="0.80352509019999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </activityIndicatorView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="LOADING" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VXN-b5-Ltw">
+                            <rect key="frame" x="14.5" y="48.5" width="54.5" height="14.5"/>
+                            <fontDescription key="fontDescription" type="system" weight="medium" pointSize="12"/>
+                            <color key="textColor" red="0.4051293433" green="0.27865970130000001" blue="0.80352509019999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstItem="VXN-b5-Ltw" firstAttribute="top" secondItem="2UO-tS-WfD" secondAttribute="bottom" constant="13.5" id="7RB-dn-DQK"/>
+                        <constraint firstAttribute="bottom" secondItem="VXN-b5-Ltw" secondAttribute="bottom" constant="10" id="L8d-wI-6fo"/>
+                        <constraint firstItem="2UO-tS-WfD" firstAttribute="top" secondItem="USi-u1-7Nd" secondAttribute="top" constant="15" id="My4-6F-cuv"/>
+                        <constraint firstAttribute="height" constant="73" id="Wim-ec-f89"/>
+                        <constraint firstItem="VXN-b5-Ltw" firstAttribute="centerX" secondItem="2UO-tS-WfD" secondAttribute="centerX" id="eCm-rp-g2K"/>
+                        <constraint firstAttribute="width" constant="83" id="iNM-Gh-ala"/>
+                        <constraint firstItem="2UO-tS-WfD" firstAttribute="centerX" secondItem="USi-u1-7Nd" secondAttribute="centerX" id="xDb-oJ-I1l"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="USi-u1-7Nd" firstAttribute="centerY" secondItem="vUN-kp-3ea" secondAttribute="centerY" id="eqz-cf-nHQ"/>
+                <constraint firstItem="USi-u1-7Nd" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="ymu-7G-zgs"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <connections>
+                <outlet property="activityIndicator" destination="2UO-tS-WfD" id="GEe-IP-BU3"/>
+                <outlet property="loadingLabel" destination="VXN-b5-Ltw" id="4Ue-RJ-TSU"/>
+                <outlet property="loadingView" destination="USi-u1-7Nd" id="h2g-h7-RRX"/>
+            </connections>
+        </view>
+    </objects>
+</document>

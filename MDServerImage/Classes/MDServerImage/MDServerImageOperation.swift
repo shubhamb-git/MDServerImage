@@ -152,7 +152,6 @@ extension MDServerImageOperation: URLSessionTaskDelegate {
             completionHandler(.performDefaultHandling, nil)
         }
     }
-//    URLSessionTaskDelegate, URLSessionDataDelegate, URLSessionDownloadDelegate
 }
 
 extension MDServerImageOperation: URLSessionDownloadDelegate {

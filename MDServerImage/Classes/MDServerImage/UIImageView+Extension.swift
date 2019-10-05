@@ -41,13 +41,15 @@ extension UIImageView {
         
         if let placeholder = placeholder {
             image = placeholder
+        } else {
+            image = nil
         }
+        
         imageViewHandler.load(url: url.toUrl, requestModification: requestModification) { [weak self] result in
             
             if case .data(let data) = result {
                 self?.image = UIImage(data: data)
             }
-            print("Strtregr")
             completion?(result)
         }
     }
