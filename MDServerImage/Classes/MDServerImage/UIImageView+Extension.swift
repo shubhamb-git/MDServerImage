@@ -19,7 +19,8 @@ extension String: MDServerURL {
 
 fileprivate var handlerKey = "handler"
 extension UIImageView {
-    public var imageViewHandler: MDServerImageViewHandler {
+
+    var imageViewHandler: MDServerImageViewHandler {
         if let obj = objc_getAssociatedObject(self, &handlerKey) as? MDServerImageViewHandler {
             return obj
         } else {
@@ -27,6 +28,13 @@ extension UIImageView {
             objc_setAssociatedObject(self, &handlerKey, obj, .OBJC_ASSOCIATION_RETAIN)
             return obj
         }
+    }
+    
+    var loader: UIActivityIndicatorView {
+        let activityIndicator = UIActivityIndicatorView(style: .white)
+        activityIndicator.color = .darkGray
+        activityIndicator.hidesWhenStopped = true
+        return activityIndicator
     }
     
     public func cancelImageDownload() {
@@ -44,12 +52,15 @@ extension UIImageView {
         } else {
             image = nil
         }
-        
+        self.addSubview(loader)
+        loader.center = center
+        loader.startAnimating()
         imageViewHandler.load(url: url.toUrl, requestModification: requestModification) { [weak self] result in
             
             if case .data(let data) = result {
                 self?.image = UIImage(data: data)
             }
+//            self?.loader.stopAnimating()
             completion?(result)
         }
     }

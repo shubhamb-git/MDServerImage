@@ -6,7 +6,7 @@
 //  Copyright © 2019 sb. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 protocol PinResponseDelegate: class {
     func didReceivedResponse()

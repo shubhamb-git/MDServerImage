@@ -21,4 +21,11 @@ struct PinModel: Decodable {
     let urls: UrlModel?
     let categories: [CategoryModel]?
     let links: PinLinkModel?
+    
+    var sizeRatio: Double {
+        if let w = width, let h = height {
+            return h/w
+        }
+        return 0
+    }
 }
