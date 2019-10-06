@@ -30,13 +30,6 @@ extension UIImageView {
         }
     }
     
-    var loader: UIActivityIndicatorView {
-        let activityIndicator = UIActivityIndicatorView(style: .white)
-        activityIndicator.color = .darkGray
-        activityIndicator.hidesWhenStopped = true
-        return activityIndicator
-    }
-    
     public func cancelImageDownload() {
         imageViewHandler.cancel()
     }
@@ -52,15 +45,11 @@ extension UIImageView {
         } else {
             image = nil
         }
-        self.addSubview(loader)
-        loader.center = center
-        loader.startAnimating()
         imageViewHandler.load(url: url.toUrl, requestModification: requestModification) { [weak self] result in
             
             if case .data(let data) = result {
                 self?.image = UIImage(data: data)
             }
-//            self?.loader.stopAnimating()
             completion?(result)
         }
     }

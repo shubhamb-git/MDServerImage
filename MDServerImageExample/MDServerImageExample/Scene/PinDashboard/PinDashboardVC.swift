@@ -10,7 +10,7 @@ import UIKit
 
 class PinDashboardVC: BaseViewController {
 
-    lazy var viewModel = PinDashboardViewModel(with: self)
+    lazy var viewModel = PinDashboardViewModel()
     
     @IBOutlet weak var collectionViewPins: UICollectionView!
     
@@ -22,14 +22,12 @@ class PinDashboardVC: BaseViewController {
         
         // UI setup
         setupUI()
-        
-        // api call
-        loader(show: true)
-        viewModel.fetchPin()
+        bindViewModel()
     }
     
     fileprivate func setupUI() {
         PinCollectionViewCell.register(cellTo: collectionViewPins)
+        CollectionViewLoadingFooter.register(cellTo: collectionViewPins)
         setupRefreshControl()
         
         if let layout = collectionViewPins.collectionViewLayout as? PinterestCollectionViewLayout {
@@ -50,58 +48,125 @@ class PinDashboardVC: BaseViewController {
     
     @objc private func reloadPins() {
         loader(show: true)
-        viewModel.fetchPin()
+        viewModel.reloadPins()
+    }
+    
+    // api call status binding with viewcontroller
+    func bindViewModel() {
+        viewModel.onChange = viewModelStateChange
+        reloadPins()
+    }
+}
+
+extension PinDashboardVC {
+    // method will call when api call status changed
+    func viewModelStateChange(change: PinListState.Change) {
+        switch change {
+        case .none:
+            break
+        case .fetchStateChanged:
+            if !viewModel.state.pins.isEmpty {
+                loader(show: false)
+                break
+            }
+            loader(show: self.viewModel.state.fetching)
+            break
+        case .pinsChanged(let collectionChange):
+            switch collectionChange {
+            case .deletion:
+                break
+            default:
+                (collectionViewPins.collectionViewLayout as! PinterestCollectionViewLayout).clearCacheAndPrepare()
+                collectionViewPins.applyCollectionChange(collectionChange, toSection: 0)
+                break
+            }
+        case .error(let userError):
+            switch userError {
+            case .connectionError(_):
+                presentAlert(withTitle: AppConstants.PlaceHolder.Text.connectionError, description: AppConstants.PlaceHolder.Text.connectionErrorMessage)
+            case .mappingFailed:
+                presentAlert(withTitle: AppConstants.PlaceHolder.Text.invalidData, description: AppConstants.PlaceHolder.Text.invalidDataErrorMessage)
+            case .reloadFailed:
+                presentAlert(withTitle: AppConstants.PlaceHolder.Text.invalidData, description: AppConstants.PlaceHolder.Text.invalidDataErrorMessage)
+            }
+            break
+        }
+        
+        if refreshControl.isRefreshing {
+            refreshControl.endRefreshing()
+        }
     }
 }
 
 extension PinDashboardVC: PinterestCollectionViewLayoutDelegate {
     
+    func numberOfItemsInSection(section: Int) -> Int {
+        return viewModel.state.pins.count
+    }
+    
     func collectionView(_ collectionView: UICollectionView, heightForPhotoAtIndexPath indexPath: IndexPath) -> CGFloat {
         
-        guard let pin = viewModel.pins?[indexPath.row] else {
+        guard !viewModel.state.pins.isEmpty else {
             return 0
         }
-        
+        let pin = viewModel.state.pins[indexPath.item]
         let cellWidth = (UIScreen.main.bounds.width - 24) / 2
         
-        return cellWidth * CGFloat(pin.sizeRatio)
-    }
-}
-
-extension PinDashboardVC: UICollectionViewDataSource {
-  
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return viewModel.pins?.count ?? 0
+        return cellWidth * CGFloat(pin.sizeRatio) + 41
     }
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let pin = viewModel.pins?[indexPath.row] else {
-            fatalError("Unexpexted behaviour")
+    func collectionView(_ collectionView: UICollectionView, heightForFooterAtIndexPath indexPath: IndexPath) -> CGFloat? {
+        if viewModel.state.page.hasNextPage {
+            return 44
         }
-        return PinCollectionViewCell.cell(for: collectionView, at: indexPath, withPin: pin)
+        return 0
     }
 }
 
-extension PinDashboardVC: PinResponseDelegate {
+extension PinDashboardVC: UICollectionViewDataSource, UICollectionViewDelegate {
     
-    func didReceivedResponse() {
-        Helper.dispatchAsyncMain { [weak self] in
-            guard let strongSelf = self else { return }
-            
-            strongSelf.loader(show: false)
-            strongSelf.collectionViewPins.reloadData()
-            
-            if strongSelf.refreshControl.isRefreshing {
-                strongSelf.refreshControl.endRefreshing()
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return viewModel.state.pins.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+       
+        switch kind {
+        case UICollectionView.elementKindSectionFooter:
+            let footerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "CollectionViewLoadingFooter", for: indexPath)
+            return footerView
+        default:
+            assert(false, "Unexpected element CollectionViewLoadingFooterkind")
+        }
+    }
+  
+    func collectionView(_ collectionView: UICollectionView, willDisplaySupplementaryView view: UICollectionReusableView, forElementKind elementKind: String, at indexPath: IndexPath) {
+        
+        if elementKind == UICollectionView.elementKindSectionFooter {
+            print("Load more")
+            if viewModel.state.page.hasNextPage {
+                self.viewModel.loadMorePins()
             }
         }
     }
     
-    func didfailed(with error: String?) {
-        Helper.dispatchAsyncMain { [weak self] in
-            guard let strongSelf = self else { return }
-            strongSelf.loader(show: false)
-            strongSelf.presentAlert(withTitle: error ?? "Internal Server error")
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        return PinCollectionViewCell.cell(for: collectionView, at: indexPath, withPin: viewModel.state.pins[indexPath.row])
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didHighlightItemAt indexPath: IndexPath) {
+        UIView.animate(withDuration: 0.3) {
+            if let cell = collectionView.cellForItem(at: indexPath) as? PinCollectionViewCell {
+                cell.pinInfoView.transform = .init(scaleX: 0.90, y: 0.90)
+            }
+        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didUnhighlightItemAt indexPath: IndexPath) {
+        UIView.animate(withDuration: 0.3) {
+            if let cell = collectionView.cellForItem(at: indexPath) as? PinCollectionViewCell {
+                cell.pinInfoView.transform = .identity
+            }
         }
     }
 }

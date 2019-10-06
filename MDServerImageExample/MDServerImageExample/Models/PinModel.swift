@@ -8,14 +8,14 @@
 
 import Foundation
 
-struct PinModel: Decodable {
+class PinModel: Decodable {
     let id: String?
     let createdAt: String?
     let width: Double?
     let height: Double?
     let color: String?
     let likes: Int?
-    let likedByUser: Bool?
+    private(set) var likedByUser: Bool?
     let user: UserModel?
     let currentUserCollections: [String]?
     let urls: UrlModel?
@@ -27,5 +27,9 @@ struct PinModel: Decodable {
             return h/w
         }
         return 0
+    }
+    
+    func like(status like: Bool) {
+        self.likedByUser = like
     }
 }

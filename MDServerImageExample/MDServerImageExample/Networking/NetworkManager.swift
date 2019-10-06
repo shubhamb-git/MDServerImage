@@ -49,7 +49,9 @@ extension NetworkRequest {
     }
     
     private func decode(_ data: Data) -> ModelType? {
-        let model = try? JSONDecoder().decode(ModelType.self, from: data)
+        let decoder = JSONDecoder()
+        decoder.keyDecodingStrategy = .convertFromSnakeCase
+        let model = try? decoder.decode(ModelType.self, from: data)
         return model
     }
 }

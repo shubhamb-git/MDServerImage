@@ -9,8 +9,11 @@
 import UIKit
 
 protocol PinterestCollectionViewLayoutDelegate: class {
-    // 1. Method to ask the delegate for the height of the image
+    func numberOfItemsInSection(section: Int) -> Int
+    
     func collectionView(_ collectionView:UICollectionView, heightForPhotoAtIndexPath indexPath:IndexPath) -> CGFloat
+    
+    func collectionView(_ collectionView:UICollectionView, heightForFooterAtIndexPath indexPath:IndexPath) -> CGFloat?
 }
 
 class PinterestCollectionViewLayout: UICollectionViewLayout {
@@ -21,6 +24,7 @@ class PinterestCollectionViewLayout: UICollectionViewLayout {
     fileprivate var cellPadding: CGFloat = 6
     
     var cache = [UICollectionViewLayoutAttributes]()
+    var footerLayoutAttributes: UICollectionViewLayoutAttributes?
     
     fileprivate var contentHeight: CGFloat = 0
     
@@ -36,6 +40,11 @@ class PinterestCollectionViewLayout: UICollectionViewLayout {
         return CGSize(width: contentWidth, height: contentHeight)
     }
     
+    func clearCacheAndPrepare() {
+        cache.removeAll()
+        prepare()
+    }
+    
     override func prepare() {
 
         guard cache.isEmpty == true, let collectionView = collectionView else {
@@ -49,7 +58,9 @@ class PinterestCollectionViewLayout: UICollectionViewLayout {
         var column = 0
         var yOffset = [CGFloat](repeating: 0, count: numberOfColumns)
         
-        for item in 0 ..< collectionView.numberOfItems(inSection: 0) {
+        let items = delegate.numberOfItemsInSection(section: 0)
+        
+        for item in 0 ..< items {
             
             let indexPath = IndexPath(item: item, section: 0)
             
@@ -64,8 +75,23 @@ class PinterestCollectionViewLayout: UICollectionViewLayout {
             
             contentHeight = max(contentHeight, frame.maxY)
             yOffset[column] = yOffset[column] + height
-            
+
             column = column < (numberOfColumns - 1) ? (column + 1) : 0
+
+            if item == items - 1 {
+                let footerIndexPath = IndexPath(item: 0, section: 0)
+                if let footerHeight = delegate.collectionView(collectionView, heightForFooterAtIndexPath: footerIndexPath) {
+                    let footerAttributes = UICollectionViewLayoutAttributes(forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter, with: footerIndexPath)
+                   
+                    let footerFrame = CGRect(x: 0, y: yOffset[column], width: collectionView.bounds.width , height: footerHeight)
+                   
+                    footerAttributes.frame = footerFrame
+                    footerLayoutAttributes = footerAttributes
+                    cache.append(footerLayoutAttributes!)
+                    
+                    contentHeight = max(contentHeight, footerFrame.maxY)
+                }
+            }
         }
     }
     
@@ -86,5 +112,8 @@ class PinterestCollectionViewLayout: UICollectionViewLayout {
         return cache[indexPath.item]
     }
     
+    override func layoutAttributesForSupplementaryView(ofKind elementKind: String, at indexPath: IndexPath) -> UICollectionViewLayoutAttributes? {
+        return footerLayoutAttributes
+    }
 }
 

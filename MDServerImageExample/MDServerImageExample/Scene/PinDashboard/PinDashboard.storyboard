@@ -43,16 +43,7 @@
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
-                                <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="eBG-zk-GKU">
-                                        <rect key="frame" x="105.5" y="0.0" width="203" height="308"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
-                                            <rect key="frame" x="0.0" y="0.0" width="203" height="308"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </view>
-                                    </collectionViewCell>
-                                </cells>
+                                <cells/>
                                 <connections>
                                     <outlet property="dataSource" destination="Z4f-y4-wfN" id="K9o-Pz-vaR"/>
                                     <outlet property="delegate" destination="Z4f-y4-wfN" id="0m0-gi-zoQ"/>
@@ -63,7 +54,7 @@
                         <constraints>
                             <constraint firstItem="97X-mY-Vqx" firstAttribute="top" secondItem="bbP-jM-puO" secondAttribute="top" id="E2F-YK-4H5"/>
                             <constraint firstItem="97X-mY-Vqx" firstAttribute="leading" secondItem="bbP-jM-puO" secondAttribute="leading" id="UbR-YX-GCP"/>
-                            <constraint firstAttribute="bottom" secondItem="97X-mY-Vqx" secondAttribute="bottom" id="eR2-oi-LEY"/>
+                            <constraint firstAttribute="bottom" secondItem="97X-mY-Vqx" secondAttribute="bottom" id="xxd-2z-Ptv"/>
                             <constraint firstItem="bbP-jM-puO" firstAttribute="trailing" secondItem="97X-mY-Vqx" secondAttribute="trailing" id="yTr-ej-4mZ"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="bbP-jM-puO"/>
