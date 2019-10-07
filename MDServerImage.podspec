@@ -9,20 +9,20 @@
 Pod::Spec.new do |s|
   s.name             = 'MDServerImage'
   s.version          = '0.1.0'
-  s.summary          = 'A short description of MDServerImage.'
-
-  s.description      = <<-DESC
-TODO: Add long description of the pod here.
-                       DESC
+  s.summary          = 'Downloading and caching images.'
+  s.swift_version    = '5'
+  s.description      = 'Swift library for downloading and caching images from the web.'
+  s.license          = { :type => 'MIT', :file => 'LICENSE' }
 
   s.homepage         = 'https://github.com/shubhamb-git/MDServerImage/'
   s.author           = { 'Shubham b' => 'shubhambairagi294@gmail.com' }
 
-  s.source           = { :git => 'https://github.com/shubhamb-git/MDServerImage.git' }
+  s.source           = { :git => 'https://github.com/shubhamb-git/MDServerImage.git', :tag => s.version }
 
   s.ios.deployment_target = '10.0'
 
   s.source_files = 'MDServerImage/Classes/**/*.swift'
 
   s.frameworks = 'UIKit'
+  
 end
