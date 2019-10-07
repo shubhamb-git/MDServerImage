@@ -41,11 +41,25 @@
 		45EFD8202349E6F800F70C0D /* UICollectionView+CollectionChange.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45EFD81F2349E6F800F70C0D /* UICollectionView+CollectionChange.swift */; };
 		45EFD8292349EA6100F70C0D /* CollectionViewLoadingFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45EFD8272349EA6100F70C0D /* CollectionViewLoadingFooter.swift */; };
 		45EFD82A2349EA6100F70C0D /* CollectionViewLoadingFooter.xib in Resources */ = {isa = PBXBuildFile; fileRef = 45EFD8282349EA6100F70C0D /* CollectionViewLoadingFooter.xib */; };
+		6C37A367234A570100B808A1 /* Pins.json in Resources */ = {isa = PBXBuildFile; fileRef = 6C37A366234A570100B808A1 /* Pins.json */; };
+		6C37A369234A577200B808A1 /* ModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C37A368234A577200B808A1 /* ModelTests.swift */; };
+		6C37A36C234A5A2000B808A1 /* NetworkTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C37A36B234A5A1F00B808A1 /* NetworkTests.swift */; };
+		6C37A36F234A5BDC00B808A1 /* PaginationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C37A36E234A5BDC00B808A1 /* PaginationTests.swift */; };
 		6CD7470F23451B3B005A63A2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CD7470E23451B3B005A63A2 /* AppDelegate.swift */; };
 		6CD7471623451B40005A63A2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6CD7471523451B40005A63A2 /* Assets.xcassets */; };
 		6CD7471923451B40005A63A2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6CD7471723451B40005A63A2 /* LaunchScreen.storyboard */; };
 		CD948EA7B5929EC9507C51AD /* Pods_MDServerImageExample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF18ECC1381D85F43C156A09 /* Pods_MDServerImageExample.framework */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		6C37A35F234A565100B808A1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 6CD7470323451B3B005A63A2 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 6CD7470A23451B3B005A63A2;
+			remoteInfo = MDServerImageExample;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		452BC6152348885000F8307F /* CategoryModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryModel.swift; sourceTree = "<group>"; };
@@ -82,6 +96,12 @@
 		45EFD81F2349E6F800F70C0D /* UICollectionView+CollectionChange.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+CollectionChange.swift"; sourceTree = "<group>"; };
 		45EFD8272349EA6100F70C0D /* CollectionViewLoadingFooter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewLoadingFooter.swift; sourceTree = "<group>"; };
 		45EFD8282349EA6100F70C0D /* CollectionViewLoadingFooter.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CollectionViewLoadingFooter.xib; sourceTree = "<group>"; };
+		6C37A35A234A565000B808A1 /* MDServerImageExampleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MDServerImageExampleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		6C37A35E234A565100B808A1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6C37A366234A570100B808A1 /* Pins.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Pins.json; sourceTree = "<group>"; };
+		6C37A368234A577200B808A1 /* ModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelTests.swift; sourceTree = "<group>"; };
+		6C37A36B234A5A1F00B808A1 /* NetworkTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkTests.swift; sourceTree = "<group>"; };
+		6C37A36E234A5BDC00B808A1 /* PaginationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaginationTests.swift; sourceTree = "<group>"; };
 		6CD7470B23451B3B005A63A2 /* MDServerImageExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MDServerImageExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6CD7470E23451B3B005A63A2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6CD7471523451B40005A63A2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -93,6 +113,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		6C37A357234A565000B808A1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		6CD7470823451B3B005A63A2 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -316,10 +343,55 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		6C37A35B234A565100B808A1 /* MDServerImageExampleTests */ = {
+			isa = PBXGroup;
+			children = (
+				6C37A365234A56D500B808A1 /* Resources */,
+				6C37A364234A56C800B808A1 /* ModelTests */,
+				6C37A36A234A5A0E00B808A1 /* NetworkingTests */,
+				6C37A36D234A5BC800B808A1 /* PaginationLogicTest */,
+				6C37A35E234A565100B808A1 /* Info.plist */,
+			);
+			path = MDServerImageExampleTests;
+			sourceTree = "<group>";
+		};
+		6C37A364234A56C800B808A1 /* ModelTests */ = {
+			isa = PBXGroup;
+			children = (
+				6C37A368234A577200B808A1 /* ModelTests.swift */,
+			);
+			path = ModelTests;
+			sourceTree = "<group>";
+		};
+		6C37A365234A56D500B808A1 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				6C37A366234A570100B808A1 /* Pins.json */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		6C37A36A234A5A0E00B808A1 /* NetworkingTests */ = {
+			isa = PBXGroup;
+			children = (
+				6C37A36B234A5A1F00B808A1 /* NetworkTests.swift */,
+			);
+			path = NetworkingTests;
+			sourceTree = "<group>";
+		};
+		6C37A36D234A5BC800B808A1 /* PaginationLogicTest */ = {
+			isa = PBXGroup;
+			children = (
+				6C37A36E234A5BDC00B808A1 /* PaginationTests.swift */,
+			);
+			path = PaginationLogicTest;
+			sourceTree = "<group>";
+		};
 		6CD7470223451B3B005A63A2 = {
 			isa = PBXGroup;
 			children = (
 				6CD7470D23451B3B005A63A2 /* MDServerImageExample */,
+				6C37A35B234A565100B808A1 /* MDServerImageExampleTests */,
 				6CD7470C23451B3B005A63A2 /* Products */,
 				557685C6F0C4E2A860C421DC /* Pods */,
 				13CAB656023F35F1627C7F67 /* Frameworks */,
@@ -330,6 +402,7 @@
 			isa = PBXGroup;
 			children = (
 				6CD7470B23451B3B005A63A2 /* MDServerImageExample.app */,
+				6C37A35A234A565000B808A1 /* MDServerImageExampleTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -355,6 +428,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		6C37A359234A565000B808A1 /* MDServerImageExampleTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6C37A363234A565100B808A1 /* Build configuration list for PBXNativeTarget "MDServerImageExampleTests" */;
+			buildPhases = (
+				6C37A356234A565000B808A1 /* Sources */,
+				6C37A357234A565000B808A1 /* Frameworks */,
+				6C37A358234A565000B808A1 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				6C37A360234A565100B808A1 /* PBXTargetDependency */,
+			);
+			name = MDServerImageExampleTests;
+			productName = MDServerImageExampleTests;
+			productReference = 6C37A35A234A565000B808A1 /* MDServerImageExampleTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		6CD7470A23451B3B005A63A2 /* MDServerImageExample */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 6CD7471D23451B40005A63A2 /* Build configuration list for PBXNativeTarget "MDServerImageExample" */;
@@ -384,6 +475,11 @@
 				LastUpgradeCheck = 1020;
 				ORGANIZATIONNAME = sb;
 				TargetAttributes = {
+					6C37A359234A565000B808A1 = {
+						CreatedOnToolsVersion = 10.2.1;
+						LastSwiftMigration = 1020;
+						TestTargetID = 6CD7470A23451B3B005A63A2;
+					};
 					6CD7470A23451B3B005A63A2 = {
 						CreatedOnToolsVersion = 10.2.1;
 					};
@@ -403,11 +499,20 @@
 			projectRoot = "";
 			targets = (
 				6CD7470A23451B3B005A63A2 /* MDServerImageExample */,
+				6C37A359234A565000B808A1 /* MDServerImageExampleTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		6C37A358234A565000B808A1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6C37A367234A570100B808A1 /* Pins.json in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		6CD7470923451B3B005A63A2 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -471,6 +576,16 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		6C37A356234A565000B808A1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6C37A36C234A5A2000B808A1 /* NetworkTests.swift in Sources */,
+				6C37A369234A577200B808A1 /* ModelTests.swift in Sources */,
+				6C37A36F234A5BDC00B808A1 /* PaginationTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		6CD7470723451B3B005A63A2 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -511,6 +626,14 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		6C37A360234A565100B808A1 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 6CD7470A23451B3B005A63A2 /* MDServerImageExample */;
+			targetProxy = 6C37A35F234A565100B808A1 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin PBXVariantGroup section */
 		6CD7471723451B40005A63A2 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
@@ -523,6 +646,49 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		6C37A361234A565100B808A1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 9E5FQU42R9;
+				INFOPLIST_FILE = MDServerImageExampleTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.MDServerImageExampleTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MDServerImageExample.app/MDServerImageExample";
+			};
+			name = Debug;
+		};
+		6C37A362234A565100B808A1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 9E5FQU42R9;
+				INFOPLIST_FILE = MDServerImageExampleTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.MDServerImageExampleTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MDServerImageExample.app/MDServerImageExample";
+			};
+			name = Release;
+		};
 		6CD7471B23451B40005A63A2 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -684,6 +850,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		6C37A363234A565100B808A1 /* Build configuration list for PBXNativeTarget "MDServerImageExampleTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6C37A361234A565100B808A1 /* Debug */,
+				6C37A362234A565100B808A1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		6CD7470623451B3B005A63A2 /* Build configuration list for PBXProject "MDServerImageExample" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

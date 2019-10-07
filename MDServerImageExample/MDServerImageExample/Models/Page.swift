@@ -13,6 +13,7 @@ struct Page {
     static let `default` = Page(current: 1, total: 1)
     static let itemPerPage = 10
     
+    let totalitem: Int
     let currentPage: Int
     let totalPage: Int
     
@@ -21,7 +22,8 @@ struct Page {
     }
     
     init(current: Int, total: Int) {
-        totalPage = total
+        totalitem = total
+        totalPage = totalitem/Page.itemPerPage + 1
         currentPage = current > 0 ? current : 1
     }
     
@@ -30,4 +32,3 @@ struct Page {
     }
     
 }
-

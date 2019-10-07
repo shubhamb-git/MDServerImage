@@ -46,7 +46,7 @@ extension PinDashboardViewModel {
             guard let strongSelf = self else { return }
             switch result {
             case .success(let response):
-                strongSelf.state.update(page: Page(current: page, total: 5))
+                strongSelf.state.update(page: Page(current: page, total: 50))
                 handler(response)
             case .failure(let error):
                 strongSelf.onChange?(.error(.connectionError(error)))
