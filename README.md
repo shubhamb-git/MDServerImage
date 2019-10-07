@@ -14,5 +14,5 @@ iOS 10.0+
 
 ## Installation
 ```
-pod 'MDServerImage', :git => 'https://github.com/shubhamb-git/MDServerImage.git'
+pod 'MDServerImage'
 ```
