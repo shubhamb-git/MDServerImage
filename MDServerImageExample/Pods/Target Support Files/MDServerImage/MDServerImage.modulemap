@@ -1,0 +1,6 @@
+framework module MDServerImage {
+  umbrella header "MDServerImage-umbrella.h"
+
+  export *
+  module * { export * }
+}
