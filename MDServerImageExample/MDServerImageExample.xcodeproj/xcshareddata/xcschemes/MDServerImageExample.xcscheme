@@ -26,13 +26,14 @@
       buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
+      codeCoverageEnabled = "YES"
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
          <TestableReference
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "45EFD82E234A099100F70C0D"
+               BlueprintIdentifier = "456B6D61234B38DE00C0D4A7"
                BuildableName = "MDServerImageExampleTests.xctest"
                BlueprintName = "MDServerImageExampleTests"
                ReferencedContainer = "container:MDServerImageExample.xcodeproj">

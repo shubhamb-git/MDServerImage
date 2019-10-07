@@ -17,6 +17,8 @@ class AsyncCache {
     private let diskCacheUrl: URL
     private let syncQueue = DispatchQueue(label: "dataCache")
     
+    var cacheCleanupDays = 30
+    
     init(name: String) throws {
         memoryCache.totalCostLimit = 32 * 1024 * 1024
         
@@ -94,8 +96,7 @@ class AsyncCache {
         }
     }
     
-    @objc private func clear() {
-        if Constant.cacheCleanupDays == 0 { return } // cleanup disabled
+    @objc func clear() {
         
         syncQueue.sync {
             memoryCache.removeAllObjects()
@@ -109,7 +110,7 @@ class AsyncCache {
                     do {
                         try (url as NSURL).getResourceValue(&lastAccess, forKey: URLResourceKey.contentAccessDateKey)
                         if let lastAccess = lastAccess as? Date {
-                            if now.timeIntervalSince(lastAccess) > TimeInterval(Constant.cacheCleanupDays * 24 * 3600) {
+                            if now.timeIntervalSince(lastAccess) > TimeInterval(cacheCleanupDays * 24 * 3600) {
                                 try FileManager.default.removeItem(at: url)
                             }
                         }

@@ -9,13 +9,27 @@
 import UIKit
 import MDServerImage
 
+enum ImageCompletionType {
+    case error(errorMessage: String)
+    case image(image: UIImage?)
+}
 extension UIImageView {
     
-    func setImage(withUrl url: String?, placeHolder: UIImage? = nil, completed: ((_ result: DataCompletionType) -> ())? = nil) {
+    func setImage(withUrl url: String?, placeHolder: UIImage? = nil, completed: ((_ result: ImageCompletionType) -> ())? = nil) {
         guard let url = url else {
             self.image = placeHolder
+            completed?(.error(errorMessage: "URL Not found"))
             return
         }
-        self.setImage(withUrl: url, placeholder: placeHolder, completion: completed)
+        self.setImage(withUrl: url, placeholder: placeHolder) { (completionType) in
+            switch completionType {
+            case .canceledOrInvalidated:
+                completed?(.error(errorMessage: "Operation cancelled by user"))
+            case .data(let data):
+                completed?(.image(image: UIImage(data: data)))
+            case .error(let error):
+                completed?(.error(errorMessage: error.localizedDescription))
+            }
+        }
     }
 }

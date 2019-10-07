@@ -10,9 +10,9 @@ import var CommonCrypto.CC_MD5_DIGEST_LENGTH
 import func CommonCrypto.CC_MD5
 import typealias CommonCrypto.CC_LONG
 
-extension String {
+public extension String {
     
-    func md5digest() -> String {
+   func md5digest() -> String {
         let length = Int(CC_MD5_DIGEST_LENGTH)
         let messageData = self.data(using:.utf8)!
         var digestData = Data(count: length)
